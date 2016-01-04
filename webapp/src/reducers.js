@@ -15,22 +15,24 @@ export function _doCommand(state = initialDoCmdState, action) {
       }
     case 'DO_COMMAND_SUCCESS':
       var newPosition = ''
-      switch (action.result.command.toLowerCase()) {
-        case 'go north':
-          newPosition = 'in the north'
-          break
-        case 'go east':
-          newPosition = 'in the west'
-          break
-        case 'go south':
-          newPosition = 'in the south'
-          break
-        case 'go west':
-          newPosition = 'in the west'
-          break
-        default:
-          newPosition = 'didn\'t move'
-      }
+
+      newPosition = action.result.newPosition;
+      //switch (action.result.command.toLowerCase()) {
+      //  case 'go north':
+      //    newPosition = 'in the north'
+      //    break
+      //  case 'go east':
+      //    newPosition = 'in the west'
+      //    break
+      //  case 'go south':
+      //    newPosition = 'in the south'
+      //    break
+      //  case 'go west':
+      //    newPosition = 'in the west'
+      //    break
+      //  default:
+      //    newPosition = 'didn\'t move'
+      //}
 
       return {
         ...state,
