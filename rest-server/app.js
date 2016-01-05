@@ -17,6 +17,6 @@ app.use(allowCrossDomain);
 
 var routes = require("./routes/routes.js")(app);
 
-var server = app.listen(3000, function () {
+var server = app.listen(3001, function () {
   console.log("Listening on port", server.address().port, "...");
 });

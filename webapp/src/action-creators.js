@@ -6,7 +6,7 @@ export function doCommand(cmd) {
     promise: () => {
       return new Promise((resolve, reject) => {
 
-        fetch('http://localhost:3000/do-command', {
+        fetch('http://localhost:3001/do-command', {
           method: 'post',
           headers: {
             'Accept': 'application/json',
@@ -37,17 +37,6 @@ export function doCommand(cmd) {
           });
 
         });
-
-
-        //setTimeout(() => {
-        //  const d = new Date()
-        //  const ms = ('000' + d.getMilliseconds()).slice(-3)
-        //  resolve({
-        //    time: `${d.toString().match(/\d{2}:\d{2}:\d{2}/)[0]}.${ms}`,
-        //    command: cmd,
-        //    newPosition: 'some new position'
-        //  })
-        //}, 2000)
       })
     }
   }
