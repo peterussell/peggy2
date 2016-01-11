@@ -22,22 +22,58 @@ export default class Home extends React.Component {
     var buttonAttrs = {}
     var msgAttrs = {}
 
+    var controlWidth = 400;
+
+    var headerWrapperStyle = {
+      textAlign: 'center',
+    };
+
+    var cmdHistoryWrapperStyle = {
+      border: '1px solid #ccc',
+      width: controlWidth,
+      height: 300,
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      position: 'relative',
+      margin: 'auto',
+      overflow: 'scroll',
+      padding: 5,
+      verticalAlign: 'bottom',
+      marginBottom: '10px !important'
+    };
+
+    var cmdHistoryVertAlignStyle = {
+      position: 'absolute',
+      bottom: 0
+    };
+
+    var inputWrapperStyle = {
+      border: '1px solid #ccc',
+      width: controlWidth,
+      height: 45,
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+      position: 'relative',
+      margin: 'auto',
+      padding: '10px 5px 5px 5px'
+    };
+
     return (
       <div>
-        <h2>Welcome to Peggy's Adventures v2</h2>
-        <input type="text" id="userInput" defaultValue="Type something..." /><br />
-        <button { ...buttonAttrs } onClick={() => this.onDoCommandButtonClick(document.getElementById('userInput').value)}>Execute!</button>
-        <br />
-        <br />
-
-        <span>
-          You told Peggy to '{ command ? `${command}` : '...' }'<br />
-          <b>Position:</b> { newPosition ? `${newPosition}` : 'No position yet...' }
-        </span>
-
-        <br />
-        <br />
-        <CommandHistory history={commandHistory} />
+        <h2 style={headerWrapperStyle}>Peggy's Adventures. Two.</h2>
+        <div style={cmdHistoryWrapperStyle}>
+          <div style={cmdHistoryVertAlignStyle}>
+            <CommandHistory history={commandHistory} />
+          </div>
+        </div>
+        <div style={inputWrapperStyle}>
+          <input type="text" id="userInput" defaultValue="Type something..." /><br />
+          <button { ...buttonAttrs } onClick={() => this.onDoCommandButtonClick(document.getElementById('userInput').value)}>Tell Peggy What's What</button>
+        </div>
 
 { /* Uncomment to show redux state in page
         <pre>
@@ -71,8 +107,13 @@ export class CommandHistory extends React.Component {
 
 export class CommandHistoryItem extends React.Component {
   render() {
+
+    var singleCmdStyle = {
+      paddingBottom: 3
+    };
+
     return (
-      <div style={{marginBottom: 20}}>{this.props.value}</div>
+      <div style={singleCmdStyle}>{this.props.value}</div>
     );
   }
 }

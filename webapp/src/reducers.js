@@ -16,8 +16,8 @@ export function _doCommand(state = initialDoCmdState, action) {
     case 'DO_COMMAND_SUCCESS':
 
       var history = state.commandHistory.slice();
-      history.push('Command: ' + action.result.command);
-      history.push('Result: ' + action.result.newPosition);
+      history.push('> ' + action.result.command);
+      history.push(action.result.newPosition);
 
       return {
         ...state,
